@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Pagina HTML</title>
+    <script src="https://kit.fontawesome.com/96a71c6473.js" crossorigin="anonymous"></script>
+    <link rel = "stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <section class="home__hero">
+            <h1>HMS VICTORY</h1>
+            <span>edicion limitada y numerada</span>
+            <h2>- 001/999 -</h2>
+        </section>
+        <section class="home__ship" id = 'home__ship__animation'>
+            <img src="/media/victory1.png"/>
+            <div class="first__frame__text__container">
+                <p id = 'home__ship__text__one' class="home__ship__text__one">Permítenos llevarte en un fascinante viaje a través del proceso de construcción del <strong>HMS VICTORY</strong>.</p>
+            </div>
+            <p id="home__ship__text__two" class="home__ship__text__two">Cada fase de la construcción, está meticulosamente 
+                realizada con la <strong>técnica de construcción de astillero</strong> la 
+                cual refleja el arduo trabajo y la pasión que se 
+                ha invertido en su creación.</p>
+            <div id= 'home__ship__difficult__level' class="home__ship__difficult__level">
+                <h2>NIVEL DE DIFICULTAD</h2>
+                <span>-experto-</span>
+                <div class="technical__specifications__container">
+
+                </div>
+            </div>
+        </section>
+        <section class="home__hero">
+        </section>
+    </main>
+    <script src = "/javascript/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.26/bundled/lenis.min.js"></script> 
+   
+   <script>
+        //SMOOTH SCROLL
+        const lenis = new Lenis()
+
+        lenis.on('scroll', (e) => {
+        console.log(e)
+        })
+
+        function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+
+        const shipSectionOne = document.querySelector('#home__ship__animation');
+
+        //Frame ONE
+        gsap.set('#home__ship__text__one', {opacity: 0})
+        gsap.set('#home__ship__text__two', {display: 'none', opacity: 0})
+        gsap.set('#home__ship__difficult__level', {display: 'none', opacity: 0})
+
+        const timeline1 = gsap.timeline({
+            scrollTrigger: {
+                trigger: shipSectionOne,
+                start: 'top top',
+                markers: true,
+                pin: true,
+                scrub: true,
+                end: '+=' + (shipSectionOne.offsetHeight * 5)
+            }
+        })
+        .to('#home__ship__text__one', {opacity: 1, stagger: 2, duration: 2})
+        .to('#home__ship__text__one', {opacity: 0, duration: 2})
+        .to('#home__ship__text__one', {display: 'none'})
+
+        .to('#home__ship__text__two', {display: 'inline-block', opacity: 1, duration: 2})
+        .to('#home__ship__text__two', {opacity: 0, duration: 2})
+        .to('#home__ship__text__two', {display: 'none'})
+
+        .to('#home__ship__difficult__level', {display: 'flex', opacity: 1, duration: 2})
+        .to('#home__ship__difficult__level', {opacity: 0, duration: 2})
+        .to('#home__ship__difficult__level', {display: 'none'})
+        
+    </script>
+</body>
+</html>

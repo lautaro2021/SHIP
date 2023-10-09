@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    --color-primary: white;
+    --color-secondary: #B78E41;
+}
+body{
+    font-size: 34px;
+    background-color: black;
+    overflow-x: hidden;
+    font-size: 'Helvetica', sans-serif;
+}
+body::-webkit-scrollbar{
+    width: 0;
+}
+main{
+    width: 100%;
+    height: 100vh;
+}
+.home__hero{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home__hero h1{
+    color:var(--color-secondary);
+}
+.home__ship{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 150px;
+    position: relative;
+}
+.home__ship img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.home__ship p {
+    color: white;
+    text-align: center;
+}
+.home__ship__text__one{
+    max-width: 34ch;
+}
+.home__ship__text__one strong {
+    color: var(--color-secondary);
+}
+.home__ship__text__two{
+    max-width: 44ch;
+}
+.home__ship__difficult__level{
+    width: 70%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.home__ship__difficult__level  h2{
+    color: white;
+}
+.home__ship__difficult__level span{
+    color: var(--color-secondary);
+}
