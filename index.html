@@ -16,26 +16,69 @@
             <h2>- 001/999 -</h2>
         </section>
         <section class="home__ship" id = 'home__ship__animation'>
-            <img src="/media/victory1.png"/>
-            <div class="first__frame__text__container">
-                <p id = 'home__ship__text__one' class="home__ship__text__one">Permítenos llevarte en un fascinante viaje a través del proceso de construcción del <strong>HMS VICTORY</strong>.</p>
+            <div class="home__ship__initial__frame" id = 'home__ship__initial__frame'>
+            
             </div>
-            <p id="home__ship__text__two" class="home__ship__text__two">Cada fase de la construcción, está meticulosamente 
-                realizada con la <strong>técnica de construcción de astillero</strong> la 
-                cual refleja el arduo trabajo y la pasión que se 
-                ha invertido en su creación.</p>
-            <div id= 'home__ship__difficult__level' class="home__ship__difficult__level">
-                <h2>NIVEL DE DIFICULTAD</h2>
-                <span>-experto-</span>
-                <div class="technical__specifications__container">
 
+            <div class="home__ship__frame__two__container">
+                <div class="black__background"></div>
+                <p id = 'home__ship__frame__one' class="home__ship__frame__one">Permítenos llevarte en un fascinante viaje a través del proceso de construcción del <strong>HMS VICTORY</strong>.</p>
+                <p id="home__ship__frame__two" class="home__ship__frame__two">Cada fase de la construcción, está meticulosamente 
+                    realizada con la <strong>técnica de construcción de astillero</strong> la 
+                    cual refleja el arduo trabajo y la pasión que se 
+                    ha invertido en su creación.</p>
+                <div id= 'home__ship__frame__three' class="home__ship__frame__three div_column">
+                    <h2>NIVEL DE DIFICULTAD</h2>
+                    <span class="styled__span">-experto-</span>
+                    <div class="technical__specifications__container">
+                        <div class="techinal__spec">
+    
+                        </div>
+                        <div class="techinal__spec">
+                            
+                        </div>
+                        <div class="techinal__spec">
+                            
+                        </div>
+                        <div class="techinal__spec">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div id='home__ship__frame__four' class="home__ship__frame__four div_column">
+                    <h2>EDICIÓN LIMITADA Y NUMERADA</h2>
+                    <span>- tu HMS Victory personalizado - </span>
+                    <br/>
+                    <h3>- 001/999 -</h3>
+                </div>
+                <div id='home__ship__frame__five' class="home__ship__frame__five div_column">
+                    <h2>CONVIERTETE EN UN MODELISTA EXPERTO</h2>
+                    <span class="styled__span">con sus más de 4.000 piezas</span>
+                </div>
+                <div id='home__ship__frame__six' class="home__ship__frame__six div_column">
+                    <h2>SUMERJETE EN LA NOBLEZA DEL VICTORY</h2>
+                    <span class="styled__span">con materiales de primera calidad</span>
+                </div>
+                <div id='home__ship__frame__seven' class="home__ship__frame__seven div_column">
+                    <h2>CERTIFICADO OFICIAL</h2>
+                    <span class="styled__span">- del National Museum of the Royal Navy - </span>
+                    <div class="certificates__container">
+                        <div class="certifacate">
+                            <img src="/media/hms-victory.png"/>
+                        </div>
+                        <div class="certifacate">
+                            <img src="/media/national-museum.png"/>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </section>
         <section class="home__hero">
         </section>
     </main>
-    <script src = "/javascript/script.js"></script>
+
+    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.26/bundled/lenis.min.js"></script> 
@@ -45,7 +88,6 @@
         const lenis = new Lenis()
 
         lenis.on('scroll', (e) => {
-        console.log(e)
         })
 
         function raf(time) {
@@ -55,34 +97,61 @@
 
         requestAnimationFrame(raf)
 
+        //SECTION ONE
         const shipSectionOne = document.querySelector('#home__ship__animation');
-
-        //Frame ONE
-        gsap.set('#home__ship__text__one', {opacity: 0})
-        gsap.set('#home__ship__text__two', {display: 'none', opacity: 0})
-        gsap.set('#home__ship__difficult__level', {display: 'none', opacity: 0})
-
-        const timeline1 = gsap.timeline({
+        const images = document.querySelectorAll('#ship__frame');
+        
+        //FRAME 1 - 360 FLIP
+        const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: shipSectionOne,
                 start: 'top top',
                 markers: true,
                 pin: true,
                 scrub: true,
-                end: '+=' + (shipSectionOne.offsetHeight * 5)
-            }
+                end: '+=' + (shipSectionOne.offsetHeight * 20),
+            },
         })
-        .to('#home__ship__text__one', {opacity: 1, stagger: 2, duration: 2})
-        .to('#home__ship__text__one', {opacity: 0, duration: 2})
-        .to('#home__ship__text__one', {display: 'none'})
 
-        .to('#home__ship__text__two', {display: 'inline-block', opacity: 1, duration: 2})
-        .to('#home__ship__text__two', {opacity: 0, duration: 2})
-        .to('#home__ship__text__two', {display: 'none'})
+        images.forEach((image, index) => {
+            timeline.to(image, {display: 'block'})
+        })
 
-        .to('#home__ship__difficult__level', {display: 'flex', opacity: 1, duration: 2})
-        .to('#home__ship__difficult__level', {opacity: 0, duration: 2})
-        .to('#home__ship__difficult__level', {display: 'none'})
+
+       //FRAME 2
+        gsap.set('#home__ship__frame__one', {opacity: 0})
+        gsap.set('#home__ship__frame__two', {display: 'none', opacity: 0})
+        gsap.set('#home__ship__frame__three', {display: 'none', opacity: 0})
+        gsap.set('#home__ship__frame__four', {display: 'none', opacity: 0})
+        gsap.set('#home__ship__frame__five', {display: 'none', opacity: 0})
+        gsap.set('#home__ship__frame__six', {display: 'none', opacity: 0})
+        gsap.set('#home__ship__frame__seven', {display: 'none', opacity: 0})
+
+        timeline.to('#home__ship__frame__one', {opacity: 1, stagger: 2, duration: 2})
+        timeline.to('#home__ship__frame__one', {opacity: 0, duration: 2})
+        timeline.to('#home__ship__frame__one', {display: 'none'})
+
+        timeline.to('#home__ship__frame__two', {display: 'inline-block', opacity: 1, duration: 2})
+        timeline.to('#home__ship__frame__two', {opacity: 0, duration: 2})
+        timeline.to('#home__ship__frame__two', {display: 'none'})
+
+        timeline.to('#home__ship__frame__three', {display: 'flex', opacity: 1, duration: 2})
+        timeline.to('#home__ship__frame__three', {opacity: 0, duration: 2})
+        timeline.to('#home__ship__frame__three', {display: 'none'})
+
+        timeline.to('#home__ship__frame__four', {display: 'flex', opacity: 1, duration: 2})
+        timeline.to('#home__ship__frame__four', {opacity: 0, duration: 2})
+        timeline.to('#home__ship__frame__four', {display: 'none'})
+
+        timeline.to('#home__ship__frame__five', {display: 'flex', opacity: 1, duration: 2})
+        timeline.to('#home__ship__frame__five', {opacity: 0, duration: 2})
+        timeline.to('#home__ship__frame__five', {display: 'none'})
+
+        timeline.to('#home__ship__frame__six', {display: 'flex', opacity: 1, duration: 2})
+        timeline.to('#home__ship__frame__six', {opacity: 0, duration: 2})
+        timeline.to('#home__ship__frame__six', {display: 'none'})
+
+        timeline.to('#home__ship__frame__seven', {display: 'flex', opacity: 1, duration: 2})
         
     </script>
 </body>
