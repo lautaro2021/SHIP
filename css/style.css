@@ -119,6 +119,7 @@ main{
 }
 .home__ship__initial__frame img:not(:first-child){
     display: none;
+    opacity: 0;
 }
 .home__ship__frame__two__container {
     position: absolute;
